@@ -11,6 +11,7 @@ import { ApolloModule, APOLLO_OPTIONS, Apollo } from 'apollo-angular'
 import { HttpLink } from 'apollo-angular/http'
 import { ApolloClientOptions, InMemoryCache } from '@apollo/client/core'
 import { environment } from 'src/environments/environment';
+import { CheckInComponent } from './check-in/check-in.component';
  
 const uri = environment.serverUrl;
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
@@ -23,7 +24,8 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
 @NgModule({
   declarations: [
     AppComponent,
-    FlightDetailsComponent
+    FlightDetailsComponent,
+    CheckInComponent
   ],
   imports: [
     BrowserModule,

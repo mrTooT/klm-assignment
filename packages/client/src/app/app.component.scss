@@ -1,0 +1,14 @@
+.klm-header {
+    background: lightblue url('../assets/images/af_pattern_bg.png') no-repeat fixed center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+    height: 10vh; 
+
+    h1.klm-header__title {
+        font-size: 30px;
+        font-weight: 800;
+        color: white;
+    }
+}

@@ -4,13 +4,13 @@ This is the introduction text for the assignment
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+Use the npm install command to begin the installation of the project
 
 ```bash
 npm install
 ```
 
-Then start both the client and server 
+I use `lerna` to both start the backend and frontend projects, by running
 
 ```bash
 npm start
@@ -26,7 +26,15 @@ foobar.pluralize('word')
 ```
 
 This project uses:
-- Nice things
-- Which will be edited
-- Later
+- Lerna
+- Cypress Component Testing
+- Angular 14 (not 15 :))
+- GraphQL Apollo with `apollo-angular`
+- Bulma (pure) CSS Library
+- Prettier
+- 
+
+Things that I wanted to implement but did not have time for
+- Frontend mocking
+- BEM integration
 
