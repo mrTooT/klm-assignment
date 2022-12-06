@@ -1,7 +1,8 @@
 export interface FlightDetails {
     bookingCode: String
-    contactDetails: ContactDetails
+    contactDetails: ContactDetails[]
     itinerary: Itinerary
+    passengers: Passengers
 }
 
 type ContactDetails =  {
@@ -9,9 +10,16 @@ type ContactDetails =  {
     address: String
 }
 
+type Passengers =  {
+    id: String
+    firstName: String
+    lastName: String
+    title: Code
+}
+
 type Itinerary = {
-type: Type
-connections: [Connections]
+    type: Type
+    connections: [Connections]
 }
 
 enum Type  {
@@ -44,8 +52,9 @@ type Code = {
     name: String
 }
 
-type Segments = {
+export type Segments = {
     id: String
     type: String
+    isVisible?: boolean
 }
   

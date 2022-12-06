@@ -78,7 +78,7 @@
             </div>
             <div *ngIf="hasInvalidBookingNumber()">
                 <p class="help is-danger">
-                    Too bad, we could't find your booking information. Please try again.
+                    {{getBookingInformationString()}}
                  </p>
             </div>
         </div>

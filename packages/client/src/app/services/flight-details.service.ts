@@ -10,6 +10,15 @@ const flightDetails = gql`
         class
         address
       }
+      passengers {
+        id
+        firstName
+        lastName
+        title {
+          code
+          name
+        }
+      }
       itinerary {
         type
         connections {

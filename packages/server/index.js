@@ -11,13 +11,21 @@ const typeDefs = gql`
   # This "FlightDetails" type defines the queryable fields for every book in our data source.
   type FlightDetails {
     bookingCode: String
-    contactDetails: ContactDetails
+    contactDetails: [ContactDetails]
     itinerary: Itinerary
+    passengers: Passengers
   }
 
   type ContactDetails {
     class: String
     address: String
+  }
+
+  type Passengers {
+    id: ID
+    firstName: String
+    lastName: String
+    title: Code
   }
 
   type Itinerary {
@@ -58,6 +66,7 @@ const typeDefs = gql`
   type Segments {
     id: ID!
     type: String
+    checkInStart: String
   }
 
 
@@ -111,7 +120,7 @@ const flightDetails = {
             {
               id: 2,
               type: "LOCAL",
-              informational: false,
+              checkInStart: "2016-10-13T03:35+02:00",
               departFrom: {
                 IATACode: "AMS",
                 name: "Schiphol",

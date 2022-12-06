@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Checkin } from './check-in.model';
 import { FlightDetailsService } from '../services/flight-details.service';
+import { environment } from 'src/environments/environment';
 
 const TIMEOUT_DURATION = 2000;
 
@@ -28,6 +29,10 @@ export class CheckInComponent implements OnInit {
 
   hasInvalidBookingNumber(): boolean {
     return this.invalidBookingNumber;
+  }
+
+  getBookingInformationString(): string {
+    return environment.noBookingInformation;
   }
 
   canSubmit(): boolean {
