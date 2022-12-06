@@ -1,5 +1,5 @@
 <div class="check-in mt-6 mb-6">
-    <form class="check-in__box box p-5">
+    <form class="check-in__box box p-5" (ngSubmit)="onSubmit()" #checkinForm="ngForm">
 
         <div class="check-in__header is-size-3 pt-4 pb-4">
             <h1 class="pb-2">RETREIVE YOUR BOOKING</h1>
@@ -12,18 +12,74 @@
             <div class="field">
                 <label class="label">Booking code</label>
                 <div class="control">
-                    <input class="input" type="email" placeholder="Please fill out your booking code">
+                    <input 
+                        [class.is-danger]="code.invalid && (code.dirty || code.touched)"
+                        [(ngModel)]="checkin.bookingCode"
+                        #code="ngModel"
+                        id="code"
+                        name="code"  
+                        autocomplete="off"  
+                        class="input" 
+                        required
+                        maxlength="6"
+                        placeholder="Please fill out your booking code"
+                        type="text">
+
+                        <div *ngIf="code.invalid && (code.dirty || code.touched)"
+                        class="alert">
+                            <p 
+                            *ngIf="code.errors?.['required']"
+                            class="help is-danger">Booking code is required.
+                            </p>
+                            <p class="help is-danger"  
+                            *ngIf="code.errors?.['maxlength']">
+                                Booking code is 6 characters
+                            </p>
+                        </div>
                 </div>
             </div>
         
             <div class="field">
                 <label class="label">Family name</label>
                 <div class="control">
-                    <input class="input" placeholder="Please fill out your family name">
+                    <input 
+                        [class.is-danger]="name.invalid && (name.dirty || name.touched)"
+                        [(ngModel)]="checkin.familyName"
+                        #name="ngModel"
+                        id="name"
+                        name="name"
+                        autocomplete="off"
+                        class="input" 
+                        required
+                        minlength="5"
+                        placeholder="Please fill out your family name"
+                        type="text">
+
+                        <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                        class="alert">
+                            <p 
+                            *ngIf="name.errors?.['required']"
+                            class="help is-danger">   Family name is required.
+                            </p>
+                            <p class="help is-danger"  
+                            *ngIf="name.errors?.['minlength']">
+                                Family name is at least 5 characters long.
+                            </p>
+                        </div>
                 </div>
             </div>
             <div class="check-in__form--button pt-4">
-                <button class="button is-danger">Retreive booking</button>
+                <button 
+                [class.is-loading]="isLoading" 
+                type="submit" 
+                class="button is-danger"
+                [disabled]="!canSubmit()"
+                >Retreive booking</button>
+            </div>
+            <div *ngIf="hasInvalidBookingNumber()">
+                <p class="help is-danger">
+                    Too bad, we could't find your booking information. Please try again.
+                 </p>
             </div>
         </div>
     </form>

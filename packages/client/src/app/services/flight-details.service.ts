@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { FlightDetails } from '../flight-details/flight-details.model';
 import { Apollo, gql } from 'apollo-angular';
 
 const flightDetails = gql`
@@ -56,15 +53,8 @@ const flightDetails = gql`
   providedIn: 'root'
 })
 export class FlightDetailsService {
-  url: string = environment.serverUrl + '/game';
 
-  constructor(private httpClient: HttpClient,
-              private apollo: Apollo) {
-  }
-
-  getUser(username: string): Observable<Boolean> {
-    console.log('User is allowed to login with: ', username);
-    return this.httpClient.post<Boolean>(this.url, username);
+  constructor(private apollo: Apollo) {
   }
 
   getFlightDetails(): Observable<any> {
