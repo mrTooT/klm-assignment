@@ -3,6 +3,54 @@ import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FlightDetails } from '../flight-details/flight-details.model';
+import { Apollo, gql } from 'apollo-angular';
+
+const flightDetails = gql`
+  query GetFlightDetails {
+    flightDetails {
+      bookingCode
+      contactDetails {
+        class
+        address
+      }
+      itinerary {
+        type
+        connections {
+          id
+            duration
+            origin {
+              IATACode
+              name
+              city {
+                IATACode
+                name
+                country {
+                  code
+                  name
+                }
+              }
+            }
+            destination {
+              IATACode
+              name
+              city {
+                IATACode
+                name
+                country {
+                  code
+                  name
+                }
+              }
+            }
+            segments {
+              id
+              type
+            }
+          }
+        }
+      }
+    }
+`;
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +58,8 @@ import { FlightDetails } from '../flight-details/flight-details.model';
 export class FlightDetailsService {
   url: string = environment.serverUrl + '/game';
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient,
+              private apollo: Apollo) {
   }
 
   getUser(username: string): Observable<Boolean> {
@@ -18,9 +67,10 @@ export class FlightDetailsService {
     return this.httpClient.post<Boolean>(this.url, username);
   }
 
-  getFlightDetails(flightNumber: string): Observable<FlightDetails> {
-    console.log('Getting flightDetails for flightnumber: ', flightNumber);
-    this.url = this.url + '/' + flightNumber;
-    return this.httpClient.get<FlightDetails>(this.url);
+  getFlightDetails(): Observable<any> {
+    return this.apollo.watchQuery<any>({
+      query: flightDetails
+    }).valueChanges;
+
   }
 }

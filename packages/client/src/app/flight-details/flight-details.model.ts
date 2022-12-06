@@ -10,8 +10,8 @@ type ContactDetails =  {
 }
 
 type Itinerary = {
-    type: Type
-    connections: [Connections]
+type: Type
+connections: [Connections]
 }
 
 enum Type  {
