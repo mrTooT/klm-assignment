@@ -1,12 +1,7 @@
-<div 
-  *ngIf="flightDetails;  else noFlightDetails" 
-  class="columns"
->
+<div *ngIf="flightDetails; else noFlightDetails" class="columns">
   <div *ngIf="flightDetails.contactDetails" class="column card m-4">
     <header class="card-header">
-      <p class="card-header-title">
-        Contact details
-      </p>
+      <p class="card-header-title">Contact details</p>
       <button class="card-header-icon" aria-label="more options">
         <span class="icon">
           <i class="fas fa-angle-down" aria-hidden="true"></i>
@@ -15,12 +10,12 @@
     </header>
     <div class="card-content">
       <div class="content">
-        <table *ngFor="let contact of flightDetails.contactDetails;" class="table is-hoverable">
+        <table *ngFor="let contact of flightDetails.contactDetails" class="table is-hoverable">
           <tbody>
             <tr *ngFor="let item of contact | keyvalue">
               <ng-container *ngIf="item.key !== '__typename'">
-                <td>{{item.key}}</td>
-                <td>{{item.value}}</td>
+                <td>{{ item.key }}</td>
+                <td>{{ item.value }}</td>
               </ng-container>
             </tr>
           </tbody>
@@ -31,9 +26,7 @@
 
   <div *ngIf="flightDetails.passengers" class="column card m-4">
     <header class="card-header">
-      <p class="card-header-title">
-        Passengers
-      </p>
+      <p class="card-header-title">Passengers</p>
       <button class="card-header-icon" aria-label="more options">
         <span class="icon">
           <i class="fas fa-angle-down" aria-hidden="true"></i>
@@ -46,11 +39,11 @@
           <tbody>
             <tr *ngFor="let item of flightDetails.passengers | keyvalue">
               <ng-container *ngIf="item.key !== '__typename'">
-                <td>{{item.key}}</td>
-                <td *ngIf="item.key ==='title';  else noFlightDetails">Mr</td>
+                <td>{{ item.key }}</td>
+                <td *ngIf="item.key === 'title'; else noFlightDetails">Mr</td>
                 <ng-template #noFlightDetails>
-                  <td>{{item.value}}</td>
-                  </ng-template>
+                  <td>{{ item.value }}</td>
+                </ng-template>
               </ng-container>
             </tr>
           </tbody>
@@ -58,11 +51,12 @@
       </div>
     </div>
   </div>
-  
+
   <div *ngIf="flightDetails.itinerary?.connections" class="column card m-4">
     <header class="card-header">
       <p class="card-header-title">
-        Connections <ng-container *ngIf="flightDetails.itinerary?.type">{{flightDetails.itinerary.type}}</ng-container>
+        Connections
+        <ng-container *ngIf="flightDetails.itinerary?.type">{{ flightDetails.itinerary.type }}</ng-container>
       </p>
       <button class="card-header-icon" aria-label="more options">
         <span class="icon">
@@ -74,40 +68,38 @@
       <div class="content">
         <div class="tabs">
           <ul>
-            <li *ngFor="let connection of flightDetails.itinerary?.connections;" class="is-active">
-              <a> 
-                <span *ngIf="connection.origin.IATACode">{{connection.origin.IATACode}}</span>
+            <li *ngFor="let connection of flightDetails.itinerary?.connections" class="is-active">
+              <a>
+                <span *ngIf="connection.origin.IATACode">{{ connection.origin.IATACode }}</span>
                 <!-- TODO: Improve this part when you have more time -->
                 <span>&nbsp;->&nbsp;</span>
-                <span *ngIf="connection.destination.IATACode">{{connection.destination.IATACode}}</span>
+                <span *ngIf="connection.destination.IATACode">{{ connection.destination.IATACode }}</span>
               </a>
             </li>
           </ul>
         </div>
-        <div *ngFor="let connection of flightDetails.itinerary?.connections;" class="flight-details__connection">
+        <div *ngFor="let connection of flightDetails.itinerary?.connections" class="flight-details__connection">
           <table class="table is-hoverable">
             <tbody>
               <tr *ngIf="connection.origin.name">
                 <td>Origin</td>
-                <td>{{connection.origin.name}}</td>
+                <td>{{ connection.origin.name }}</td>
               </tr>
               <tr *ngIf="connection.destination.name">
                 <td>Destination</td>
-                <td>{{connection.destination.name}}</td>
+                <td>{{ connection.destination.name }}</td>
               </tr>
             </tbody>
           </table>
           <ng-container *ngIf="connection.segments">
-            <div *ngFor="let segment of connection.segments;">
+            <div *ngFor="let segment of connection.segments">
               <button class="button is-info" (click)="onMoreInformationClick(segment)" aria-label="more options">
                 More information:
                 <span class="icon">
                   <i class="fas fa-angle-down" aria-hidden="true"></i>
                 </span>
               </button>
-              <div *ngIf="showMoreInformation" class="m-4">
-                This is more information about the segment
-              </div>
+              <div *ngIf="showMoreInformation" class="m-4">This is more information about the segment</div>
             </div>
           </ng-container>
         </div>
@@ -117,5 +109,6 @@
 </div>
 <ng-template #noFlightDetails>
   <div class="box">
-    {{getBookingInformationString()}}
-</div></ng-template>
+    {{ getBookingInformationString() }}
+  </div></ng-template
+>

@@ -1,6 +1,4 @@
 export type FlightDetails = {
-    bookingCode: string
-    contactDetails: string
-}
-
- 
+  bookingCode: string;
+  contactDetails: string;
+};

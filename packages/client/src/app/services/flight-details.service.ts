@@ -23,53 +23,50 @@ const flightDetails = gql`
         type
         connections {
           id
-            duration
-            origin {
+          duration
+          origin {
+            IATACode
+            name
+            city {
               IATACode
               name
-              city {
-                IATACode
+              country {
+                code
                 name
-                country {
-                  code
-                  name
-                }
               }
             }
-            destination {
+          }
+          destination {
+            IATACode
+            name
+            city {
               IATACode
               name
-              city {
-                IATACode
+              country {
+                code
                 name
-                country {
-                  code
-                  name
-                }
               }
             }
-            segments {
-              id
-              type
-            }
+          }
+          segments {
+            id
+            type
           }
         }
       }
     }
+  }
 `;
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FlightDetailsService {
-
-  constructor(private apollo: Apollo) {
-  }
+  constructor(private apollo: Apollo) {}
 
   getFlightDetails(): Observable<any> {
     return this.apollo.watchQuery<any>({
-      query: flightDetails
+      query: flightDetails,
     }).valueChanges;
-
   }
 }

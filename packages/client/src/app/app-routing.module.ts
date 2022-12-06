@@ -8,29 +8,29 @@ const routes: Routes = [
     path: 'checkin',
     component: CheckInComponent,
     data: {
-      title: 'CHECK-IN'
-    }
+      title: 'CHECK-IN',
+    },
   },
   {
     path: 'details',
     component: FlightDetailsComponent,
     data: {
-      title: 'FLIGHT DETAILS'
-    }
+      title: 'FLIGHT DETAILS',
+    },
   },
   {
     path: '',
     redirectTo: '/checkin',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: '**',
-    redirectTo: '/checkin'
-  }
+    redirectTo: '/checkin',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

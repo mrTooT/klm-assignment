@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FlightDetailsService } from '../services/flight-details.service';
 import { FlightDetails, Segments } from './flight-details.model';
-import { Apollo, gql } from 'apollo-angular'
+import { Apollo, gql } from 'apollo-angular';
 import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-flight-details',
   templateUrl: './flight-details.component.html',
-  styleUrls: ['./flight-details.component.scss']
+  styleUrls: ['./flight-details.component.scss'],
 })
 export class FlightDetailsComponent implements OnInit {
   public flightDetails: FlightDetails;
@@ -18,10 +18,7 @@ export class FlightDetailsComponent implements OnInit {
   // TODO: Add proper implementation
   public showMoreInformation = false;
 
-  constructor(
-    private apollo: Apollo,
-    private flightDetailsService: FlightDetailsService) {
-  }
+  constructor(private apollo: Apollo, private flightDetailsService: FlightDetailsService) {}
 
   ngOnInit(): void {
     this.getFlightDetails();
@@ -31,8 +28,7 @@ export class FlightDetailsComponent implements OnInit {
     return environment.noBookingInformation;
   }
   getFlightDetails() {
-    this.flightDetailsService.getFlightDetails()
-    .subscribe((data) => {
+    this.flightDetailsService.getFlightDetails().subscribe(data => {
       this.flightDetails = data.data?.flightDetails as FlightDetails;
       console.log('flightDetails', this.flightDetails);
     });

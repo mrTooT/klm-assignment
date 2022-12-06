@@ -5,5 +5,5 @@
 export const environment = {
   production: false,
   serverUrl: 'http://localhost:4000/',
-  noBookingInformation: 'Too bad, we could not find your booking information. Please try again.'
+  noBookingInformation: 'Too bad, we could not find your booking information. Please try again.',
 };

@@ -1,40 +1,40 @@
 .check-in {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .check-in__box {
+    max-width: 360px;
+    border: 1px solid black;
+  }
+
+  .check-in__header {
+    text-align: center;
+    position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-    .check-in__box {
-        max-width: 360px;
-        border: 1px solid black;
+
+    h1 {
+      font-weight: 900;
     }
 
-    .check-in__header {
-        text-align: center;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-        h1 {
-            font-weight: 900;
-        }
-
-        .check-in__header--line {
-            height: 0.15rem;
-            width: 1rem;
-            background: black;
-        }
+    .check-in__header--line {
+      height: 0.15rem;
+      width: 1rem;
+      background: black;
     }
+  }
 
-    .check-in__introduction {
-        font-weight: 200;
-    }
+  .check-in__introduction {
+    font-weight: 200;
+  }
 
-    .check-in__form {
-        .check-in__form--button {
-            display: flex;
-            justify-content: center;
-        }
+  .check-in__form {
+    .check-in__form--button {
+      display: flex;
+      justify-content: center;
     }
+  }
 }

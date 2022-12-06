@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Checkin } from './check-in.model';
 import { FlightDetailsService } from '../services/flight-details.service';
 import { environment } from 'src/environments/environment';
@@ -8,24 +8,17 @@ const TIMEOUT_DURATION = 2000;
 @Component({
   selector: 'app-check-in',
   templateUrl: './check-in.component.html',
-  styleUrls: ['./check-in.component.scss']
+  styleUrls: ['./check-in.component.scss'],
 })
-export class CheckInComponent implements OnInit {
-
+export class CheckInComponent {
   public checkin: Checkin = {
     bookingCode: '',
-    familyName: ''
-  }
+    familyName: '',
+  };
   public isLoading = false;
   public invalidBookingNumber = false;
 
-  constructor(
-    private flightDetailsService: FlightDetailsService) {
-  }
-
-  ngOnInit(): void {
-    console.log('Hi from the checkin component');
-  }
+  constructor(private flightDetailsService: FlightDetailsService) {}
 
   hasInvalidBookingNumber(): boolean {
     return this.invalidBookingNumber;
@@ -46,18 +39,16 @@ export class CheckInComponent implements OnInit {
     return false;
   }
 
-  onSubmit(): void { 
+  onSubmit(): void {
     this.isLoading = true;
 
-    this.flightDetailsService.getFlightDetails()
-    .subscribe((data) => {
+    this.flightDetailsService.getFlightDetails().subscribe(data => {
       setTimeout(() => {
         const bookingCode = data.data?.flightDetails?.bookingCode;
         console.log('bookingsCode', bookingCode);
         if (bookingCode === this.checkin.bookingCode) {
           this.invalidBookingNumber = false;
           this.navigateToFlightDetails();
-
         } else {
           this.invalidBookingNumber = true;
           this.isLoading = false;
@@ -69,5 +60,4 @@ export class CheckInComponent implements OnInit {
   navigateToFlightDetails(): void {
     window.location.href = '/details';
   }
-
 }

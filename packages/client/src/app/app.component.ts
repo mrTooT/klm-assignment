@@ -4,7 +4,7 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   title = 'client';
@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.events.subscribe(event => {
-      if(event instanceof NavigationEnd) {
+      if (event instanceof NavigationEnd) {
         this.title = this.route.root.firstChild?.snapshot.data['title'];
       }
     });
