@@ -3,14 +3,14 @@
   justify-content: center;
   align-items: center;
 
-  .check-in__box {
-    max-width: 360px;
+  &__box {
     @media screen and (min-width: 768px) {
+      max-width: 400px;
       border: 1px solid black;
     }
   }
 
-  .check-in__header {
+  &__header {
     text-align: center;
     position: relative;
     display: flex;
@@ -22,19 +22,19 @@
       font-weight: 900;
     }
 
-    .check-in__header--line {
+    &__header--line {
       height: 0.15rem;
       width: 1rem;
       background: black;
     }
   }
 
-  .check-in__introduction {
+  &__introduction {
     font-weight: 200;
   }
 
-  .check-in__form {
-    .check-in__form--button {
+  &__form {
+    &--button {
       display: flex;
       justify-content: center;
     }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FlightDetailsService } from '../services/flight-details.service';
 import { environment } from 'src/environments/environment';
-import {FormControl} from "@angular/forms";
+import { FormControl } from "@angular/forms";
 
 const TIMEOUT_DURATION = 2000;
 
@@ -44,7 +44,6 @@ export class CheckInComponent {
     this.flightDetailsService.getFlightDetails().subscribe(data => {
       setTimeout(() => {
         const bookingCode = data.data?.flightDetails?.bookingCode;
-        console.log('bookingsCode', bookingCode);
         if (bookingCode === this.bookingCode.value) {
           this.invalidBookingNumber = false;
           this.navigateToFlightDetails();
