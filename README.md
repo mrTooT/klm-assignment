@@ -2,7 +2,7 @@
 
 This is my KLM assignment, I had a lot of fun creating this repository.
 
-It was my first time using GraphQL so I learned a lot
+It was my first time using GraphQL so I learned a lot.
 
 My assumption is that KLM uses a (self maintained) design library. Therefor I included the CSS Library Bulma to mimic that.
 
@@ -12,13 +12,13 @@ Please note that because of time constraints, I put not that much effort into th
 
 ## Installation
 
-I use `lerna` to both install the backend and frontend projects, by running:
+First install `lerna` and after that use `lerna` to both install the backend and frontend projects, by running:
 
 ```bash
 npm install
 ```
 
-I use `lerna` to both start the backend and frontend projects, by running:
+Use `lerna` to both start the backend and frontend projects, by running:
 
 ```bash
 npm start
@@ -29,7 +29,7 @@ npm start
 You can test the Log-in Form Acceptance criteria with [Cypress Component Testing](https://docs.cypress.io/guides/component-testing/angular/overview), by running:
 
 ```bash
-npm run test
+npm test
 ```
 
 ## Usage
