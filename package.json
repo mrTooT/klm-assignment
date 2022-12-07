@@ -5,7 +5,9 @@
     "packages/*"
   ],
   "scripts": {
-    "start": "lerna run start"
+    "install-all": "lerna exec npm install",
+    "start": "lerna run start",
+    "test": "lerna run test"
   },
   "devDependencies": {
     "lerna": "^6.1.0",

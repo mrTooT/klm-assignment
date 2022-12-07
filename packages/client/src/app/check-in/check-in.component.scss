@@ -5,7 +5,9 @@
 
   .check-in__box {
     max-width: 360px;
-    border: 1px solid black;
+    @media screen and (min-width: 768px) {
+      border: 1px solid black;
+    }
   }
 
   .check-in__header {

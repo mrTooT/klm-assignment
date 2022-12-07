@@ -12,13 +12,13 @@ Please note that because of time constraints, I put not that much effort into th
 
 ## Installation
 
-Use the npm install command to begin the installation of the project
+I use `lerna` to both install the backend and frontend projects, by running:
 
 ```bash
-npm install
+npm install-all
 ```
 
-I use `lerna` to both start the backend and frontend projects, by running
+I use `lerna` to both start the backend and frontend projects, by running:
 
 ```bash
 npm start
