@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FlightDetailsService } from '../services/flight-details.service';
 import { environment } from 'src/environments/environment';
-import { FormControl } from "@angular/forms";
+import { FormControl } from '@angular/forms';
 
 const TIMEOUT_DURATION = 2000;
 

@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { FlightDetailsComponent } from './flight-details/flight-details.component';
 import { environment } from 'src/environments/environment';
 import { CheckInComponent } from './check-in/check-in.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Apollo Includes
 import { ApolloModule, APOLLO_OPTIONS, Apollo } from 'apollo-angular';
