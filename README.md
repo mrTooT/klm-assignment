@@ -50,3 +50,4 @@ Things that I wanted to implement but did not have time for
 - Get more data from json file
 - Semantics of flight-details page
 - Enrichment of data of flight-details page
+- Share Models between client and server

@@ -9,7 +9,8 @@
     "test": "cypress open",
     "test:ci": "cypress run",
     "lint": "eslint --ext .js,.ts src/",
-    "lint:fix": "npm run lint --fix"
+    "lint:fix": "npm run lint --fix",
+    "prettify": "npx prettier --write ."
   },
   "private": true,
   "dependencies": {
