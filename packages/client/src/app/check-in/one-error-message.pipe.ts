@@ -6,16 +6,14 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'oneErrorMessage'
+  name: 'oneErrorMessage',
 })
 export class OneErrorMessagePipe implements PipeTransform {
-
   transform(obj: any): unknown {
     const keys = Object.keys(obj);
-    if (keys && keys.length>0) {
+    if (keys && keys.length > 0) {
       return keys[0];
     }
     return null;
   }
-
 }

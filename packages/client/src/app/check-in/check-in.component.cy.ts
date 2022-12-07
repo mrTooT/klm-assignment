@@ -5,91 +5,87 @@
 // Family name should be at least 2 characters;
 // Family name has a maximum length of 30 characters;
 
-import { FlightDetailsService } from '../services/flight-details.service'
-import { CheckInComponent } from './check-in.component'
+import { FlightDetailsService } from '../services/flight-details.service';
+import { CheckInComponent } from './check-in.component';
 import { ApolloModule } from 'apollo-angular';
 import { HttpClientModule } from '@angular/common/http';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {OneErrorMessagePipe} from "./one-error-message.pipe";
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OneErrorMessagePipe } from './one-error-message.pipe';
 
 describe('CheckInComponent', () => {
   it('mounts', () => {
     cy.mount(CheckInComponent, {
-        declarations: [OneErrorMessagePipe],
-        imports: [ApolloModule, HttpClientModule, FormsModule, ReactiveFormsModule],
-        providers: [FlightDetailsService]
-
-    })
-  })
+      declarations: [OneErrorMessagePipe],
+      imports: [ApolloModule, HttpClientModule, FormsModule, ReactiveFormsModule],
+      providers: [FlightDetailsService],
+    });
+  });
 
   it('submit button should not be disabled when form validates', () => {
     cy.mount(CheckInComponent, {
       declarations: [OneErrorMessagePipe],
       imports: [ApolloModule, HttpClientModule, FormsModule, ReactiveFormsModule],
-      providers: [FlightDetailsService]
-    })
-    cy.get('[data-cy=booking]').type('234567')
-    cy.get('[data-cy=name]').type('Toetenel')
-    cy.get('[data-cy=button]').should('not.be.disabled')
-  })
+      providers: [FlightDetailsService],
+    });
+    cy.get('[data-cy=booking]').type('234567');
+    cy.get('[data-cy=name]').type('Toetenel');
+    cy.get('[data-cy=button]').should('not.be.disabled');
+  });
 
   it('submit button should disabled when booking input has fewer than 5 chars', () => {
     cy.mount(CheckInComponent, {
       declarations: [OneErrorMessagePipe],
       imports: [ApolloModule, HttpClientModule, FormsModule, ReactiveFormsModule],
-      providers: [FlightDetailsService]
-    })
-    cy.get('[data-cy=booking]').type('123')
-    cy.get('[data-cy=name]').type('Toetenel')
-    cy.get('[data-cy=button]').should('be.disabled')
-
-  })
+      providers: [FlightDetailsService],
+    });
+    cy.get('[data-cy=booking]').type('123');
+    cy.get('[data-cy=name]').type('Toetenel');
+    cy.get('[data-cy=button]').should('be.disabled');
+  });
 
   it('submit button should disabled when  booking number has the number 1', () => {
     cy.mount(CheckInComponent, {
       declarations: [OneErrorMessagePipe],
       imports: [ApolloModule, HttpClientModule, FormsModule, ReactiveFormsModule],
-      providers: [FlightDetailsService]
-    })
-    cy.get('[data-cy=booking]').type('111111')
-    cy.get('[data-cy=name]').type('Toetenel')
-    cy.get('[data-cy=button]').should('be.disabled')
-  })
+      providers: [FlightDetailsService],
+    });
+    cy.get('[data-cy=booking]').type('111111');
+    cy.get('[data-cy=name]').type('Toetenel');
+    cy.get('[data-cy=button]').should('be.disabled');
+  });
 
   it('submit button should disabled when  booking number has an special character', () => {
     cy.mount(CheckInComponent, {
       declarations: [OneErrorMessagePipe],
       imports: [ApolloModule, HttpClientModule, FormsModule, ReactiveFormsModule],
-      providers: [FlightDetailsService]
-    })
-    cy.get('[data-cy=booking]').type('@klm22')
-    cy.get('[data-cy=name]').type('Toetenel')
-    cy.get('[data-cy=button]').should('be.disabled')
-  })
+      providers: [FlightDetailsService],
+    });
+    cy.get('[data-cy=booking]').type('@klm22');
+    cy.get('[data-cy=name]').type('Toetenel');
+    cy.get('[data-cy=button]').should('be.disabled');
+  });
 
   it('submit button should disabled when family name has to few characters', () => {
     cy.mount(CheckInComponent, {
       declarations: [OneErrorMessagePipe],
       imports: [ApolloModule, HttpClientModule, FormsModule, ReactiveFormsModule],
-      providers: [FlightDetailsService]
-    })
-    cy.get('[data-cy=booking]').type('234567')
-    cy.get('[data-cy=name]').type('To')
-    cy.get('[data-cy=button]').should('be.disabled')
-  })
+      providers: [FlightDetailsService],
+    });
+    cy.get('[data-cy=booking]').type('234567');
+    cy.get('[data-cy=name]').type('To');
+    cy.get('[data-cy=button]').should('be.disabled');
+  });
 
   it('should only have 1 error message for booking code when multiple errors are active', () => {
     cy.mount(CheckInComponent, {
       declarations: [OneErrorMessagePipe],
       imports: [ApolloModule, HttpClientModule, FormsModule, ReactiveFormsModule],
-      providers: [FlightDetailsService]
-    })
-    cy.get('[data-cy=booking]').type('11')
-    cy.get('[data-cy=name]').type('Toetenel')
-    cy.get('[data-cy=booking-error]').children().should('have.length', 1)
-
-  })
+      providers: [FlightDetailsService],
+    });
+    cy.get('[data-cy=booking]').type('11');
+    cy.get('[data-cy=name]').type('Toetenel');
+    cy.get('[data-cy=booking-error]').children().should('have.length', 1);
+  });
 
   it('should be submitting the data when clicked the submit button', () => {
     cy.mount(CheckInComponent, {
@@ -97,13 +93,13 @@ describe('CheckInComponent', () => {
       imports: [ApolloModule, HttpClientModule, FormsModule, ReactiveFormsModule],
       providers: [FlightDetailsService],
       componentProperties: {
-        onSubmit: cy.spy().as('onSubmitSpy')
+        onSubmit: cy.spy().as('onSubmitSpy'),
       },
-    })
-    cy.get('[data-cy=booking]').type('234567')
-    cy.get('[data-cy=name]').type('Toetenel')
-    cy.get('[data-cy=button]').should('not.be.disabled')
-    cy.get('[data-cy=button]').click()
-    cy.get('@onSubmitSpy').should('have.been.called')
-  })
-})
+    });
+    cy.get('[data-cy=booking]').type('234567');
+    cy.get('[data-cy=name]').type('Toetenel');
+    cy.get('[data-cy=button]').should('not.be.disabled');
+    cy.get('[data-cy=button]').click();
+    cy.get('@onSubmitSpy').should('have.been.called');
+  });
+});

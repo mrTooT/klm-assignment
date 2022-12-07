@@ -28,11 +28,23 @@
             data-cy="booking"
           />
 
-          <div *ngIf="bookingCode.invalid && (bookingCode.dirty || bookingCode.touched)" class="alert" data-cy="booking-error">
-            <p class="help is-danger" *ngIf="(bookingCode.errors | oneErrorMessage) === 'required'">Booking code is required.</p>
-            <p class="help is-danger" *ngIf="(bookingCode.errors | oneErrorMessage) === 'pattern'">Booking code cannot contain number '1'</p>
-            <p class="help is-danger" *ngIf="(bookingCode.errors | oneErrorMessage) === 'minlength'">Booking code is 6 characters</p>
-            <p class="help is-danger" *ngIf="(bookingCode.errors | oneErrorMessage) === 'maxlength'">Booking code is 6 characters</p>
+          <div
+            *ngIf="bookingCode.invalid && (bookingCode.dirty || bookingCode.touched)"
+            class="alert"
+            data-cy="booking-error"
+          >
+            <p class="help is-danger" *ngIf="(bookingCode.errors | oneErrorMessage) === 'required'">
+              Booking code is required.
+            </p>
+            <p class="help is-danger" *ngIf="(bookingCode.errors | oneErrorMessage) === 'pattern'">
+              Booking code cannot contain number '1'
+            </p>
+            <p class="help is-danger" *ngIf="(bookingCode.errors | oneErrorMessage) === 'minlength'">
+              Booking code is 6 characters
+            </p>
+            <p class="help is-danger" *ngIf="(bookingCode.errors | oneErrorMessage) === 'maxlength'">
+              Booking code is 6 characters
+            </p>
           </div>
         </div>
       </div>
@@ -57,7 +69,9 @@
 
           <div *ngIf="familyName.invalid && (familyName.dirty || familyName.touched)" class="alert">
             <p *ngIf="familyName.errors?.['required']" class="help is-danger">Family name is required.</p>
-            <p class="help is-danger" *ngIf="familyName.errors?.['minlength']">Family name is at least 3 characters long.</p>
+            <p class="help is-danger" *ngIf="familyName.errors?.['minlength']">
+              Family name is at least 3 characters long.
+            </p>
           </div>
           <div *ngIf="hasInvalidBookingNumber()">
             <p class="help is-danger">
