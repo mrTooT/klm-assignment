@@ -14,6 +14,7 @@
           <input
             [class.is-danger]="bookingCode.invalid && (bookingCode.dirty || bookingCode.touched)"
             [formControl]="bookingCode"
+            (input)="onBookingCodeChange()"
             id="code"
             name="code"
             autocomplete="off"
@@ -56,7 +57,12 @@
 
           <div *ngIf="familyName.invalid && (familyName.dirty || familyName.touched)" class="alert">
             <p *ngIf="familyName.errors?.['required']" class="help is-danger">Family name is required.</p>
-            <p class="help is-danger" *ngIf="familyName.errors?.['minlength']">Family name is at least 5 characters long.</p>
+            <p class="help is-danger" *ngIf="familyName.errors?.['minlength']">Family name is at least 3 characters long.</p>
+          </div>
+          <div *ngIf="hasInvalidBookingNumber()">
+            <p class="help is-danger">
+              {{ getBookingInformationString() }}
+            </p>
           </div>
         </div>
       </div>
@@ -70,11 +76,6 @@
         >
           Retreive booking
         </button>
-      </div>
-      <div *ngIf="hasInvalidBookingNumber()">
-        <p class="help is-danger">
-          {{ getBookingInformationString() }}
-        </p>
       </div>
     </div>
   </form>

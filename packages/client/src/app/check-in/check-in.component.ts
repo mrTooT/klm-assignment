@@ -26,6 +26,11 @@ export class CheckInComponent {
     return environment.noBookingInformation;
   }
 
+  onBookingCodeChange() {
+    console.log('BookingCodeChanged');
+    this.invalidBookingNumber = false;
+  }
+
   canSubmit(): boolean {
     if (this.bookingCode.invalid || this.familyName.invalid) {
       return false;
