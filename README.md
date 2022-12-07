@@ -15,7 +15,7 @@ Please note that because of time constraints, I put not that much effort into th
 I use `lerna` to both install the backend and frontend projects, by running:
 
 ```bash
-npm install-all
+npm install
 ```
 
 I use `lerna` to both start the backend and frontend projects, by running:
@@ -29,7 +29,7 @@ npm start
 You can test the Log-in Form Acceptance criteria with [Cypress Component Testing](https://docs.cypress.io/guides/component-testing/angular/overview), by running:
 
 ```bash
-npm test
+npm run test
 ```
 
 ## Usage
@@ -51,3 +51,4 @@ Things that I wanted to implement but did not have time for
 - Semantics of flight-details page
 - Enrichment of data of flight-details page
 - Share Models between client and server
+- Create multiple form validators for 1 and special characters

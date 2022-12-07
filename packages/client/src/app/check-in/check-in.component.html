@@ -37,7 +37,7 @@
               Booking code is required.
             </p>
             <p class="help is-danger" *ngIf="(bookingCode.errors | oneErrorMessage) === 'pattern'">
-              Booking code cannot contain number '1'
+              Booking code cannot contain number '1' or have special characters.
             </p>
             <p class="help is-danger" *ngIf="(bookingCode.errors | oneErrorMessage) === 'minlength'">
               Booking code is 6 characters
