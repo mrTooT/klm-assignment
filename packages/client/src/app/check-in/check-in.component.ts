@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Checkin } from './check-in.model';
 import { FlightDetailsService } from '../services/flight-details.service';
 import { environment } from 'src/environments/environment';
+import {FormControl} from "@angular/forms";
 
 const TIMEOUT_DURATION = 2000;
 
@@ -11,12 +11,10 @@ const TIMEOUT_DURATION = 2000;
   styleUrls: ['./check-in.component.scss'],
 })
 export class CheckInComponent {
-  public checkin: Checkin = {
-    bookingCode: '',
-    familyName: '',
-  };
   public isLoading = false;
   public invalidBookingNumber = false;
+  public familyName = new FormControl('');
+  public bookingCode = new FormControl('');
 
   constructor(private flightDetailsService: FlightDetailsService) {}
 
@@ -29,14 +27,10 @@ export class CheckInComponent {
   }
 
   canSubmit(): boolean {
-    if (this.checkin.bookingCode && this.checkin.familyName) {
-      if (this.checkin.bookingCode.length === 5) {
-        return true;
-      } else if (this.checkin.familyName.length > 4) {
-        return true;
-      }
+    if (this.bookingCode.invalid || this.familyName.invalid) {
+      return false;
     }
-    return false;
+    return true;
   }
 
   onSubmit(): void {
@@ -46,7 +40,7 @@ export class CheckInComponent {
       setTimeout(() => {
         const bookingCode = data.data?.flightDetails?.bookingCode;
         console.log('bookingsCode', bookingCode);
-        if (bookingCode === this.checkin.bookingCode) {
+        if (bookingCode === this.bookingCode.value) {
           this.invalidBookingNumber = false;
           this.navigateToFlightDetails();
         } else {

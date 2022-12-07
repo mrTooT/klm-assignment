@@ -12,22 +12,26 @@
         <label class="label">Booking code</label>
         <div class="control">
           <input
-            [class.is-danger]="code.invalid && (code.dirty || code.touched)"
-            [(ngModel)]="checkin.bookingCode"
-            #code="ngModel"
+            [class.is-danger]="bookingCode.invalid && (bookingCode.dirty || bookingCode.touched)"
+            [formControl]="bookingCode"
             id="code"
             name="code"
             autocomplete="off"
             class="input"
             required
+            pattern="[^1]*"
+            minlength="5"
             maxlength="6"
             placeholder="Please fill out your booking code"
             type="text"
+            data-cy="booking"
           />
 
-          <div *ngIf="code.invalid && (code.dirty || code.touched)" class="alert">
-            <p *ngIf="code.errors?.['required']" class="help is-danger">Booking code is required.</p>
-            <p class="help is-danger" *ngIf="code.errors?.['maxlength']">Booking code is 6 characters</p>
+          <div *ngIf="bookingCode.invalid && (bookingCode.dirty || bookingCode.touched)" class="alert" data-cy="booking-error">
+            <p class="help is-danger" *ngIf="(bookingCode.errors | oneErrorMessage) === 'required'">Booking code is required.</p>
+            <p class="help is-danger" *ngIf="(bookingCode.errors | oneErrorMessage) === 'pattern'">Booking code cannot contain number '1'</p>
+            <p class="help is-danger" *ngIf="(bookingCode.errors | oneErrorMessage) === 'minlength'">Booking code is 6 characters</p>
+            <p class="help is-danger" *ngIf="(bookingCode.errors | oneErrorMessage) === 'maxlength'">Booking code is 6 characters</p>
           </div>
         </div>
       </div>
@@ -36,27 +40,34 @@
         <label class="label">Family name</label>
         <div class="control">
           <input
-            [class.is-danger]="name.invalid && (name.dirty || name.touched)"
-            [(ngModel)]="checkin.familyName"
-            #name="ngModel"
+            [class.is-danger]="familyName.invalid && (familyName.dirty || familyName.touched)"
+            [formControl]="familyName"
             id="name"
             name="name"
             autocomplete="off"
             class="input"
             required
-            minlength="5"
+            minlength="2"
+            maxlength="30"
             placeholder="Please fill out your family name"
             type="text"
+            data-cy="name"
           />
 
-          <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
-            <p *ngIf="name.errors?.['required']" class="help is-danger">Family name is required.</p>
-            <p class="help is-danger" *ngIf="name.errors?.['minlength']">Family name is at least 5 characters long.</p>
+          <div *ngIf="familyName.invalid && (familyName.dirty || familyName.touched)" class="alert">
+            <p *ngIf="familyName.errors?.['required']" class="help is-danger">Family name is required.</p>
+            <p class="help is-danger" *ngIf="familyName.errors?.['minlength']">Family name is at least 5 characters long.</p>
           </div>
         </div>
       </div>
       <div class="check-in__form--button pt-4">
-        <button [class.is-loading]="isLoading" type="submit" class="button is-danger" [disabled]="!canSubmit()">
+        <button
+          [class.is-loading]="isLoading"
+          [disabled]="!canSubmit()"
+          type="submit"
+          class="button is-danger"
+          data-cy="button"
+        >
           Retreive booking
         </button>
       </div>
