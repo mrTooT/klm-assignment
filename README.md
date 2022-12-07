@@ -16,6 +16,7 @@ First install `lerna` and after that use `lerna` to both install the backend and
 
 ```bash
 npm install
+npm run install-all
 ```
 
 Use `lerna` to both start the backend and frontend projects, by running:
