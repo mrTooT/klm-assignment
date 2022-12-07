@@ -34,7 +34,7 @@ describe('CheckInComponent', () => {
     cy.get('[data-cy=button]').should('not.be.disabled')
   })
 
-  it('submit button should disabled when booking input has to few chars', () => {
+  it('submit button should disabled when booking input has fewer than 5 chars', () => {
     cy.mount(CheckInComponent, {
       declarations: [OneErrorMessagePipe],
       imports: [ApolloModule, HttpClientModule, FormsModule, ReactiveFormsModule],
@@ -46,18 +46,7 @@ describe('CheckInComponent', () => {
 
   })
 
-  it('submit button should disabled when  booking Number 4 characters', () => {
-    cy.mount(CheckInComponent, {
-      declarations: [OneErrorMessagePipe],
-      imports: [ApolloModule, HttpClientModule, FormsModule, ReactiveFormsModule],
-      providers: [FlightDetailsService]
-    })
-    cy.get('[data-cy=booking]').type('2346')
-    cy.get('[data-cy=name]').type('Toetenel')
-    cy.get('[data-cy=button]').should('be.disabled')
-  })
-
-  it('submit button should disabled when  booking Number has the number 1', () => {
+  it('submit button should disabled when  booking number has the number 1', () => {
     cy.mount(CheckInComponent, {
       declarations: [OneErrorMessagePipe],
       imports: [ApolloModule, HttpClientModule, FormsModule, ReactiveFormsModule],
@@ -65,6 +54,28 @@ describe('CheckInComponent', () => {
     })
     cy.get('[data-cy=booking]').type('111111')
     cy.get('[data-cy=name]').type('Toetenel')
+    cy.get('[data-cy=button]').should('be.disabled')
+  })
+
+  it('submit button should disabled when  booking number has an special character', () => {
+    cy.mount(CheckInComponent, {
+      declarations: [OneErrorMessagePipe],
+      imports: [ApolloModule, HttpClientModule, FormsModule, ReactiveFormsModule],
+      providers: [FlightDetailsService]
+    })
+    cy.get('[data-cy=booking]').type('@klm22')
+    cy.get('[data-cy=name]').type('Toetenel')
+    cy.get('[data-cy=button]').should('be.disabled')
+  })
+
+  it('submit button should disabled when family name has to few characters', () => {
+    cy.mount(CheckInComponent, {
+      declarations: [OneErrorMessagePipe],
+      imports: [ApolloModule, HttpClientModule, FormsModule, ReactiveFormsModule],
+      providers: [FlightDetailsService]
+    })
+    cy.get('[data-cy=booking]').type('234567')
+    cy.get('[data-cy=name]').type('To')
     cy.get('[data-cy=button]').should('be.disabled')
   })
 
