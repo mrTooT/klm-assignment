@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FlightDetailsService } from '../services/flight-details.service';
 import { FlightDetails, Segments } from './flight-details.model';
-import { Apollo, gql } from 'apollo-angular';
+import { Apollo } from 'apollo-angular';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -34,7 +34,7 @@ export class FlightDetailsComponent implements OnInit {
     });
   }
 
-  onMoreInformationClick(segment: Segments) {
+  onMoreInformationClick() {
     // This is purely implemented for demo purposes
     // TODO: Add proper implementation
     this.showMoreInformation = !this.showMoreInformation;

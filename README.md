@@ -24,15 +24,24 @@ I use `lerna` to both start the backend and frontend projects, by running:
 npm start
 ```
 
+# Cypress Component Testing
+
+You can test the Log-in Form Acceptance criteria with [Cypress Component Testing](https://docs.cypress.io/guides/component-testing/angular/overview), by running:
+
+```bash
+npm test
+```
+
 ## Usage
 
 This project uses:
-- Lerna
-- Cypress Component Testing
-- Angular 14 (not 15 :))
-- GraphQL Apollo with `apollo-angular`
-- Bulma (pure) CSS Library
-- Prettier
+- [Lerna](https://lerna.js.org/docs/getting-started)
+- [Cypress Component Testing](https://docs.cypress.io/guides/component-testing/angular/overview)
+- Angular 14 (not 15, [because it does not work with](https://github.com/kamilkisiela/apollo-angular/issues/1848) :point_down:
+- GraphQL Apollo with [Apollo Angular](https://the-guild.dev/graphql/apollo-angular/docs)
+- [Bulma](https://bulma.io/documentation/) CSS Library
+- [Prettier](https://prettier.io/docs/en/install.html)
+- [Linting with eslint](https://eslint.org/)
 
 ## Improvements
 
@@ -41,4 +50,3 @@ Things that I wanted to implement but did not have time for
 - Get more data from json file
 - Semantics of flight-details page
 - Enrichment of data of flight-details page
-

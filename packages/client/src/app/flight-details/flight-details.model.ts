@@ -1,19 +1,19 @@
 export interface FlightDetails {
-  bookingCode: String;
+  bookingCode: string;
   contactDetails: ContactDetails[];
   itinerary: Itinerary;
   passengers: Passengers;
 }
 
 type ContactDetails = {
-  class: String;
-  address: String;
+  class: string;
+  address: string;
 };
 
 type Passengers = {
-  id: String;
-  firstName: String;
-  lastName: String;
+  id: string;
+  firstName: string;
+  lastName: string;
   title: Code;
 };
 
@@ -28,32 +28,32 @@ enum Type {
 }
 
 type Connections = {
-  id: String;
-  duration: Number;
+  id: string;
+  duration: number;
   origin: Airport;
   destination: Airport;
   segments: [Segments];
 };
 
 type Airport = {
-  IATACode: String;
-  name: String;
+  IATACode: string;
+  name: string;
   city: AirportCity;
 };
 
 type AirportCity = {
-  IATACode: String;
-  name: String;
+  IATACode: string;
+  name: string;
   country: Code;
 };
 
 type Code = {
-  code: String;
-  name: String;
+  code: string;
+  name: string;
 };
 
 export type Segments = {
-  id: String;
-  type: String;
+  id: string;
+  type: string;
   isVisible?: boolean;
 };

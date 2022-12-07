@@ -11,7 +11,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class OneErrorMessagePipe implements PipeTransform {
 
   transform(obj: any): unknown {
-    let keys = Object.keys(obj);
+    const keys = Object.keys(obj);
     if (keys && keys.length>0) {
       return keys[0];
     }
